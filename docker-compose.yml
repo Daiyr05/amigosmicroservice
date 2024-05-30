@@ -1,0 +1,19 @@
+services:
+  postgres:
+    container_name: customer_db
+    image: postgres
+    environment:
+      POSTGRES_USER: amigos
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: customer
+    ports:
+      - "2345:5432"
+    volumes:
+      - postgres:/var/data
+    networks:
+      - postgres-network
+volumes:
+  postgres:
+networks:
+  postgres-network:
+    driver: bridge
